@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:give_n_go/ui/charity_detail/components/map_view.dart';
 import 'package:give_n_go/ui/charity_detail/components/map_view_state.dart';
+import 'package:give_n_go/ui/payment_page/payment_page.dart';
+import 'package:give_n_go/ui/payment_page/payment_page_state.dart';
 import 'package:give_n_go/util/constants.dart';
 import 'package:provider/provider.dart';
 
@@ -75,6 +77,15 @@ class CharityDetail extends StatelessWidget {
                                   onPressed: () {
                                     if (state.donationFormKey.currentState!
                                         .validate()) {
+                                      Navigator.of(context)
+                                          .push(MaterialPageRoute(
+                                        builder: (context) =>
+                                            ChangeNotifierProvider(
+                                          create: (context) =>
+                                              PaymentPageState(),
+                                          child: PaymentPage(),
+                                        ),
+                                      ));
                                       Navigator.pop(context, 'Okay');
                                     }
                                   },
