@@ -14,7 +14,8 @@ class CharityPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<Charity> charityList = _box.get(hiveCharity);
+    final List<dynamic> dynamicList = _box.get(hiveCharity);
+    final List<Charity> charityList = dynamicList.cast<Charity>();
 
     return ListView.builder(
       itemCount: charityList.length,
@@ -36,8 +37,8 @@ class CharityPage extends StatelessWidget {
                 children: <Widget>[
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8),
-                    child: Image.network(
-                      'https://picsum.photos/250?image=9',
+                    child: Image.asset(
+                      'assets/card-image-1.png',
                       height: 80,
                       width: 80,
                     ),
