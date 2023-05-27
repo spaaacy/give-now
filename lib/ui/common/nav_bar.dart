@@ -17,11 +17,7 @@ class NavBar extends StatelessWidget {
           label: 'Home',
         ),
         BottomNavigationBarItem(
-          icon: Image.asset(
-            'assets/logo-charity-1.png',
-            width: 39,
-            height: 39,
-          ),
+          icon: Icon(Icons.house_rounded),
           label: 'Charity',
         ),
         const BottomNavigationBarItem(
