@@ -1,24 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
-class HomePageProvider extends ChangeNotifier {
-  String _test = '';
-  int _selectedIndex = 0;
+class HomePageState extends ChangeNotifier {
 
-  int get selectedIndex => _selectedIndex;
-  String get test => _test;
 
-  set selectedIndex(int value) {
-    _selectedIndex = value;
-    notifyListeners();
-  }
-
-  set test(String value) {
-    _test = value;
-    notifyListeners();
-  }
-
-  @override
-  void notifyListeners() {
-    super.notifyListeners();
-  }
 }
