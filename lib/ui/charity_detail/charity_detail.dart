@@ -3,7 +3,6 @@ import 'package:give_n_go/ui/charity_detail/components/map_view.dart';
 import 'package:give_n_go/ui/charity_detail/components/map_view_state.dart';
 import 'package:give_n_go/ui/payment_page/payment_page.dart';
 import 'package:give_n_go/ui/payment_page/payment_page_state.dart';
-import 'package:give_n_go/util/constants.dart';
 import 'package:provider/provider.dart';
 
 import 'charity_detail_state.dart';
@@ -24,22 +23,32 @@ class CharityDetail extends StatelessWidget {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Icon(Icons.logo_dev), // TODO: Use logo
+                  Image(
+                    height: 60,
+                    width: 60,
+                    image: NetworkImage(state.charity.image),
+                  ),
                   const SizedBox(width: 16.0),
-                  Text(
-                    'Title',
-                    style: Theme.of(context).textTheme.headlineMedium,
+                  Flexible(
+                    child: Container(
+                      padding: new EdgeInsets.only(right: 13.0),
+                      child: Text(
+                        overflow: TextOverflow.ellipsis,
+                        state.charity.title,
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
+                    ),
                   ),
                 ],
               ),
-              const SizedBox(height: 8.0),
+              const SizedBox(height: 16.0),
               ChangeNotifierProvider(
                   create: (context) => MapViewState(), child: const MapView()),
               const SizedBox(height: 8.0),
               Card(
                 child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text(sampleDescription,
+                    child: Text(state.charity.description,
                         style: Theme.of(context).textTheme.bodyLarge)),
               ),
               const Spacer(),

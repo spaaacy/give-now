@@ -4,7 +4,12 @@ import 'package:give_n_go/util/constants.dart';
 import 'package:intl/intl.dart';
 import 'package:latlong2/latlong.dart';
 
+import '../../data/charity.dart';
+
 class CharityDetailState extends ChangeNotifier {
+  CharityDetailState(this.charity);
+
+  final Charity charity;
   final donationFormKey = GlobalKey<FormState>();
   final donationAmountController = TextEditingController();
   double _donationAmt = 10000.0;
@@ -17,8 +22,4 @@ class CharityDetailState extends ChangeNotifier {
         NumberFormat.currency(locale: 'en_MY', symbol: 'RM ');
     return currencyFormatter.format(_donationAmt);
   }
-
-  final String title = 'Title';
-  final String description = sampleDescription;
-  final LatLng latLng = LatLng(3.1555986071194044, 101.6922410572238);
 }
