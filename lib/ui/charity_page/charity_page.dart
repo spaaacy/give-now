@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../data/charity.dart';
+import '../charity_detail/charity_detail.dart';
+import '../charity_detail/charity_detail_state.dart';
 
 class CharityPage extends StatelessWidget {
   CharityPage({super.key});
@@ -28,16 +31,19 @@ class CharityPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Charity page"),
-        centerTitle: true,
-      ),
-      body: ListView.builder(
-        itemCount: charityList.length,
-        itemBuilder: (context, index) {
-          return Card(
-            margin: const EdgeInsets.all(10),
+    return ListView.builder(
+      itemCount: charityList.length,
+      itemBuilder: (context, index) {
+        return Card(
+          margin: const EdgeInsets.all(10),
+          child: InkWell(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => ChangeNotifierProvider(
+                    create: (context) => CharityDetailState(),
+                    child: const CharityDetail(),
+                  )));
+            },
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Row(
@@ -78,9 +84,9 @@ class CharityPage extends StatelessWidget {
                 ],
               ),
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }

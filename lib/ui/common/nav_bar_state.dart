@@ -17,13 +17,16 @@ class NavBarState extends ChangeNotifier {
       child: const HomePage(),
     ),
     ChangeNotifierProvider(
-      create: (context) => CharityDetailState(),
-      child: const CharityDetail(),
-    ),
-    ChangeNotifierProvider(
       create: (context) => CharityPageState(),
       child: CharityPage(),
-    )
+    ),
+    const Text('Settings'),
+  ];
+
+  final List<String> widgetTitles = [
+    'Home Page',
+    'Charities',
+    'Settings'
   ];
 
   int get selectedIndex => _selectedIndex;

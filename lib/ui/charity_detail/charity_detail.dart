@@ -14,9 +14,7 @@ class CharityDetail extends StatelessWidget {
     final state = context.watch<CharityDetailState>();
 
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Charities'),
-        ),
+        appBar: AppBar(title: const Text('Charity Details')),
         body: Padding(
           padding: const EdgeInsets.all(24.0),
           child: ListView(
