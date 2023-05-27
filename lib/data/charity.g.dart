@@ -21,13 +21,16 @@ class CharityAdapter extends TypeAdapter<Charity> {
       description: fields[1] as String,
       image: fields[2] as String,
       distance: fields[3] as double,
+      donationGoal: fields[4] as double,
+      currentDonation: fields[5] as double,
+      latitudeLongitude: fields[6] as LatLng,
     );
   }
 
   @override
   void write(BinaryWriter writer, Charity obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.title)
       ..writeByte(1)
@@ -35,7 +38,13 @@ class CharityAdapter extends TypeAdapter<Charity> {
       ..writeByte(2)
       ..write(obj.image)
       ..writeByte(3)
-      ..write(obj.distance);
+      ..write(obj.distance)
+      ..writeByte(4)
+      ..write(obj.donationGoal)
+      ..writeByte(5)
+      ..write(obj.currentDonation)
+      ..writeByte(6)
+      ..write(obj.latitudeLongitude);
   }
 
   @override

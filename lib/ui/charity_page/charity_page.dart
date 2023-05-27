@@ -36,8 +36,8 @@ class CharityPage extends StatelessWidget {
                 children: <Widget>[
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8),
-                    child: Image.network(
-                      'https://picsum.photos/250?image=9',
+                    child: Image(
+                      image: NetworkImage(charityList[index].image),
                       height: 80,
                       width: 80,
                     ),
