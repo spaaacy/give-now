@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 
+import '../../service/location_service.dart';
+
 class HomePageState extends ChangeNotifier {
+
   double _accountBalance = 10000.0;
   double get accountBalance => this._accountBalance;
 
@@ -22,4 +25,6 @@ class HomePageState extends ChangeNotifier {
     _accountBalance -= amount;
     notifyListeners();
   }
+
+
 }
