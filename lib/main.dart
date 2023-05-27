@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:give_n_go/ui/charity_page/charity_page.dart';
 import 'package:give_n_go/ui/home_page/home_page.dart';
 import 'package:give_n_go/ui/home_page/home_page_provider.dart';
 import 'package:provider/provider.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       ),
       home: ChangeNotifierProvider(
         create: (context) => HomePageProvider(),
-        child: const MyHomePage(title: 'Flutter Demo Home Page'),
+        child: CharityPage(),
       ),
     );
   }
