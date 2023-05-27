@@ -19,7 +19,7 @@ class MapView extends StatelessWidget {
         mapController: state.mapController,
         options: MapOptions(
           interactiveFlags: InteractiveFlag.none,
-          center: LatLng(3.155427473968213, 101.69936952853939), // TODO: Use charity
+          center: charityDetailState.charity.latitudeLongitude, // LatLng(3.155427473968213, 101.69936952853939), // TODO: Use charity
           zoom: 17,
           minZoom: 7,
           maxZoom: 18,

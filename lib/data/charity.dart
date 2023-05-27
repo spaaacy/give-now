@@ -1,5 +1,5 @@
 import 'package:hive_flutter/adapters.dart';
-import 'package:latlng/latlng.dart';
+import 'package:latlong2/latlong.dart';
 
 part 'charity.g.dart';
 

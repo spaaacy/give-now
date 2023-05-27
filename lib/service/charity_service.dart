@@ -1,7 +1,7 @@
 import 'package:give_n_go/util/constants.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:latlng/latlng.dart';
 
+import 'package:latlong2/latlong.dart';
 import '../data/charity.dart';
 
 Future<void> initializeData() async {
@@ -18,7 +18,7 @@ Future<void> initializeData() async {
         distance: 0.5,
         donationGoal: 50000,
         currentDonation: 40000,
-        latitudeLongitude: const LatLng(
+        latitudeLongitude: LatLng(
           3.156390000837918,
           101.69530158096654,
         ),
@@ -32,7 +32,7 @@ Future<void> initializeData() async {
         distance: 0.5,
         donationGoal: 50000,
         currentDonation: 39000,
-        latitudeLongitude: const LatLng(
+        latitudeLongitude: LatLng(
           3.15082121192776,
           101.70225056293401,
         ),
@@ -46,7 +46,7 @@ Future<void> initializeData() async {
         distance: 1.0,
         donationGoal: 35000,
         currentDonation: 36128,
-        latitudeLongitude: const LatLng(
+        latitudeLongitude: LatLng(
           3.055512832758655,
           101.70059358234609,
         ),
@@ -60,7 +60,7 @@ Future<void> initializeData() async {
         distance: 1.0,
         donationGoal: 35000,
         currentDonation: 36128,
-        latitudeLongitude: const LatLng(
+        latitudeLongitude: LatLng(
           3.149360971179684,
           101.69364170550686,
         ),
@@ -74,7 +74,7 @@ Future<void> initializeData() async {
         distance: 1.0,
         donationGoal: 35000,
         currentDonation: 36128,
-        latitudeLongitude: const LatLng(
+        latitudeLongitude: LatLng(
           3.1573311390094125,
           101.711494489058,
         ),
