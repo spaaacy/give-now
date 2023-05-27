@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 import '../util/constants.dart';
+import '../util/location_helper.dart';
+import 'location_service.dart';
 
 class NotificationService {
   /*
@@ -20,21 +22,22 @@ class NotificationService {
 
   FlutterLocalNotificationsPlugin get notificationPlugin => _notificationPlugin;
 
-  late final BuildContext _context;
-
-  Future<void> initialize(BuildContext context) async {
-    _context = context;
-
+  Future<void> initialize(context) async {
     const androidInitialization = AndroidInitializationSettings('ic_stat_feature_graphic');
 
-    final iOSInitialization = DarwinInitializationSettings(
-        onDidReceiveLocalNotification: onDidReceiveLocalNotification);
+    const iOSInitialization = DarwinInitializationSettings();
 
-    final initializationSettings = InitializationSettings(android: androidInitialization, iOS: iOSInitialization);
+    const initializationSettings = InitializationSettings(android: androidInitialization, iOS: iOSInitialization);
     await notificationPlugin.initialize(initializationSettings);
-    notificationPlugin
+    await notificationPlugin
         .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
         ?.requestPermission();
+
+    await handleLocationPermission(context);
+
+    if (!LocationService.isRegistered) {
+      LocationService.registerLocationBackgroundService();
+    }
   }
 
   Future<void> displayNotification(String title, String body) async {
@@ -47,27 +50,6 @@ class NotificationService {
     );
     const notificationDetails = NotificationDetails(android: androidDetails);
     await notificationPlugin.show(charityNotificationId, title, body, notificationDetails);
-  }
-
-  // For iOS, when app is in foreground
-  void onDidReceiveLocalNotification(int id, String? title, String? body, String? payload) async {
-    // display a dialog with the notification details, tap ok to go to another page
-    showDialog(
-      context: _context,
-      builder: (BuildContext context) => CupertinoAlertDialog(
-        title: (title != null) ? Text(title) : null,
-        content: (body != null) ? Text(body) : null,
-        actions: [
-          CupertinoDialogAction(
-            isDefaultAction: true,
-            child: const Text('Ok'),
-            onPressed: () async {
-              Navigator.of(context, rootNavigator: true).pop();
-            },
-          )
-        ],
-      ),
-    );
   }
 
 }

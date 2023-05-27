@@ -4,3 +4,6 @@ const String hiveCharity = "CHARITIES";
 const String charityChannelId = "charity";
 const String charityChannelName = "Charity Notifications";
 const int charityNotificationId = 0;
+const String locationChannelId = "location";
+const String locationChannelName = "Location Notifications";
+const int locationNotificationId = 1;

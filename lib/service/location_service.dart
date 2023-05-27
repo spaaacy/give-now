@@ -14,6 +14,7 @@ class LocationService {
 
   @pragma('vm:entry-point')
   static Future<void> _onStart(ServiceInstance service) async {
+    final notificationService = NotificationService();
     DartPluginRegistrant.ensureInitialized();
 
     service.on('stopService').listen((event) {
@@ -22,10 +23,11 @@ class LocationService {
 
     Timer.periodic(const Duration(seconds: 15), (Timer t) async {
       var pos = await Geolocator.getCurrentPosition();
+      notificationService.displayNotification("Title", "${pos.latitude} ${pos.longitude}");
     });
   }
 
-  static void unregisterDriverLocationBackgroundService() async {
+  static void unregisterLocationBackgroundService() async {
     isRegistered = false;
     final service = FlutterBackgroundService();
     var isRunning = await service.isRunning();
@@ -34,14 +36,14 @@ class LocationService {
     }
   }
 
-  static void registerDriverLocationBackgroundService() async {
+  static void registerLocationBackgroundService() async {
     isRegistered = true;
     final service = FlutterBackgroundService();
 
     const AndroidNotificationChannel channel = AndroidNotificationChannel(
-      charityChannelId,
-      charityChannelName,
-      description: 'Watching for nearby virtual donations boxes', // description
+      locationChannelId,
+      locationChannelName,
+      description: 'Watching out for nearby virtual donations boxes', // description
       importance: Importance.low, // importance must be at low or higher level
     );
 
@@ -56,11 +58,11 @@ class LocationService {
           onStart: _onStart,
           autoStart: true,
           isForegroundMode: true,
-          notificationChannelId: charityChannelId,
+          notificationChannelId: locationChannelId,
           initialNotificationTitle: 'giveNgo',
-          initialNotificationContent: 'Watching for nearby virtual donations boxes',
-          foregroundServiceNotificationId: charityNotificationId,
-          autoStartOnBoot: false
+          initialNotificationContent: 'Watching out for nearby virtual donations boxes',
+          foregroundServiceNotificationId: locationNotificationId,
+          autoStartOnBoot: true
       ),
       iosConfiguration: IosConfiguration(
         onForeground: _onStart,
