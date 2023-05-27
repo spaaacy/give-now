@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:give_n_go/ui/home_page/home_page.dart';
-import 'package:give_n_go/ui/home_page/home_page_provider.dart';
+import 'package:give_n_go/ui/home_page/home_page_state.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -17,10 +17,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
+        colorSchemeSeed: Colors.lightBlue,
       ),
       home: ChangeNotifierProvider(
         create: (context) => HomePageProvider(),
-        child: const MyHomePage(title: 'Flutter Demo Home Page'),
+        child: MayBankHP(),
       ),
     );
   }
