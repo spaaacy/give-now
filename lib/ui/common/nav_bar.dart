@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../home_page/home_page_state.dart';
+import 'nav_bar_state.dart';
 
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final homePageProvider = Provider.of<HomePageProvider>(context);
+    final state = Provider.of<BottomNavBarProvider>(context);
     return BottomNavigationBar(
       items: <BottomNavigationBarItem>[
         const BottomNavigationBarItem(
@@ -30,10 +30,10 @@ class BottomNavBar extends StatelessWidget {
         ),
       ],
       type: BottomNavigationBarType.fixed,
-      currentIndex: homePageProvider.selectedIndex,
+      currentIndex: state.selectedIndex,
       selectedItemColor: Colors.black,
       iconSize: 40,
-      onTap: (index) => homePageProvider.selectedIndex = index,
+      onTap: (index) => state.selectedIndex = index,
       elevation: 10,
     );
   }
