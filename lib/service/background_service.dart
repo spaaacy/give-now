@@ -9,7 +9,7 @@ import 'package:give_n_go/util/constants.dart';
 
 import 'notification_service.dart';
 
-class LocationService {
+class BackgroundService {
   static bool isRegistered = false;
 
   @pragma('vm:entry-point')
@@ -23,7 +23,7 @@ class LocationService {
 
     Timer.periodic(const Duration(seconds: 15), (Timer t) async {
       var pos = await Geolocator.getCurrentPosition();
-      notificationService.displayNotification("Title", "${pos.latitude} ${pos.longitude}");
+      notificationService.displayNotification("Title", "${pos.latitude} ${pos.longitude}", "SOLS 24/7");
     });
   }
 
