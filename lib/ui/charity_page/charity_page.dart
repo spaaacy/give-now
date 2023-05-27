@@ -4,17 +4,16 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
 
 import '../../data/charity.dart';
+import '../../service/background_service.dart';
 import '../charity_detail/charity_detail.dart';
 import '../charity_detail/charity_detail_state.dart';
 
 class CharityPage extends StatelessWidget {
-  CharityPage({super.key});
-
   final _box = Hive.box('box');
 
   @override
   Widget build(BuildContext context) {
-    final List<Charity> charityList = _box.get(hiveCharity);
+    final List<dynamic> charityList = _box.get(hiveCharity);
 
     return ListView.builder(
       itemCount: charityList.length,
@@ -25,7 +24,7 @@ class CharityPage extends StatelessWidget {
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => ChangeNotifierProvider(
-                        create: (context) => CharityDetailState(),
+                        create: (context) => CharityDetailState(charityList[index]),
                         child: const CharityDetail(),
                       )));
             },

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:give_n_go/data/charity.dart';
 import 'package:give_n_go/ui/charity_detail/components/map_view.dart';
 import 'package:give_n_go/ui/charity_detail/components/map_view_state.dart';
 import 'package:give_n_go/util/constants.dart';
@@ -25,7 +26,7 @@ class CharityDetail extends StatelessWidget {
                   const Icon(Icons.logo_dev), // TODO: Use logo
                   const SizedBox(width: 16.0),
                   Text(
-                    'Title',
+                    state.charity.title,
                     style: Theme.of(context).textTheme.headlineMedium,
                   ),
                 ],
@@ -37,7 +38,7 @@ class CharityDetail extends StatelessWidget {
               Card(
                 child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text(sampleDescription,
+                    child: Text(state.charity.description,
                         style: Theme.of(context).textTheme.bodyLarge)),
               ),
               const Spacer(),
