@@ -3,12 +3,12 @@ import 'package:provider/provider.dart';
 
 import 'nav_bar_state.dart';
 
-class BottomNavBar extends StatelessWidget {
-  const BottomNavBar({super.key});
+class NavBar extends StatelessWidget {
+  const NavBar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final state = Provider.of<BottomNavBarProvider>(context);
+    final state = Provider.of<NavBarState>(context);
     return BottomNavigationBar(
       items: <BottomNavigationBarItem>[
         const BottomNavigationBarItem(

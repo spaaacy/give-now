@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:give_n_go/ui/common/nav_bar_wrapper.dart';
 import 'package:give_n_go/ui/home_page/home_page.dart';
 import 'package:give_n_go/ui/common/nav_bar_state.dart';
 import 'package:give_n_go/ui/home_page/home_page_state.dart';
@@ -21,8 +22,8 @@ class MyApp extends StatelessWidget {
         colorSchemeSeed: Colors.lightBlue,
       ),
       home: ChangeNotifierProvider(
-        create: (context) => (HomePageState()),
-        child: HomePage(),
+        create: (context) => (NavBarState()),
+        child: const NavBarWrapper(),
       ),
     );
   }
