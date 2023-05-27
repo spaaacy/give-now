@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:give_n_go/ui/home_page/home_page_state.dart';
 import 'package:provider/provider.dart';
 
-import '../../service/location_service.dart';
+import '../../service/background_service.dart';
 import '../../util/location_helper.dart';
 import '../charity_detail/charity_detail.dart';
 import '../charity_detail/charity_detail_state.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 
-import '../../service/location_service.dart';
+import '../../service/background_service.dart';
 
 class HomePageState extends ChangeNotifier {
 
