@@ -12,7 +12,7 @@ class NavBarWrapper extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('giveNgo')
+        title: Text(state.widgetTitles.elementAt(state.selectedIndex))
       ),
       body: Center(child: state.widgetOptions.elementAt(state.selectedIndex),),
       bottomNavigationBar: const NavBar(),

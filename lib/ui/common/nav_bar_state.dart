@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:give_n_go/ui/charity_page/charity_detail.dart';
-import 'package:give_n_go/ui/charity_page/charity_detail_state.dart';
 import 'package:give_n_go/ui/home_page/home_page_state.dart';
 import 'package:provider/provider.dart';
 
+import '../charity_detail/charity_detail.dart';
+import '../charity_detail/charity_detail_state.dart';
+import '../charity_page/charity_page.dart';
+import '../charity_page/charity_page_state.dart';
 import '../home_page/home_page.dart';
 
 class NavBarState extends ChangeNotifier {
@@ -15,11 +17,16 @@ class NavBarState extends ChangeNotifier {
       child: const HomePage(),
     ),
     ChangeNotifierProvider(
-      create: (context) => CharityDetailState(),
-      child: const CharityDetail(),
+      create: (context) => CharityPageState(),
+      child: CharityPage(),
     ),
-    const Text('Profile Page',
-        style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+    const Text('Settings'),
+  ];
+
+  final List<String> widgetTitles = [
+    'Home Page',
+    'Charities',
+    'Settings'
   ];
 
   int get selectedIndex => _selectedIndex;
