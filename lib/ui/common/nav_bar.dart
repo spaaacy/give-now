@@ -10,28 +10,29 @@ class NavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final state = Provider.of<NavBarState>(context);
     return BottomNavigationBar(
+      backgroundColor: Color.fromARGB(255, 2, 66, 109),
       items: <BottomNavigationBarItem>[
         const BottomNavigationBarItem(
-            icon: Icon(Icons.home_work_rounded),
-            label: 'Home',
-            backgroundColor: Colors.green),
+          icon: Icon(Icons.home_work_rounded),
+          label: 'Home',
+        ),
         BottomNavigationBarItem(
-            icon: Image.asset(
-              'assets/logo-charity-1.png',
-              width: 39,
-              height: 39,
-            ),
-            label: 'Charity',
-            backgroundColor: Colors.yellow),
+          icon: Image.asset(
+            'assets/logo-charity-1.png',
+            width: 39,
+            height: 39,
+          ),
+          label: 'Charity',
+        ),
         const BottomNavigationBarItem(
           icon: Icon(Icons.settings),
           label: 'Settings',
-          backgroundColor: Colors.blue,
         ),
       ],
       type: BottomNavigationBarType.fixed,
       currentIndex: state.selectedIndex,
-      selectedItemColor: Colors.black,
+      selectedItemColor: Colors.white,
+      unselectedItemColor: Colors.white30,
       iconSize: 40,
       onTap: (index) => state.selectedIndex = index,
       elevation: 10,
