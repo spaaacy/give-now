@@ -10,30 +10,35 @@ class CharityDetail extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Charities'),
         ),
-        body: Column(children: [
-          Row(
-            children: [
-              // TODO: Logo
-              Text('Title'),
-            ],
-          ),
+        body: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Icon(Icons.logo_dev), // TODO: Use logo
+                const SizedBox(width: 8.0),
+                Text('Title'),
+              ],
+            ),
 
-          const SizedBox(height: 8.0),
+            const SizedBox(height: 8.0),
 
-          // TODO: Flutter Map
+            // TODO: Flutter Map
 
-          const SizedBox(height: 8.0),
+            const SizedBox(height: 8.0),
 
-          Card(
-            child: Text(sampleDescription),
-          ),
+            Card(
+              child: Text(sampleDescription),
+            ),
 
-          ElevatedButton(
-              onPressed: () {
-                // TODO: Show dialog
-              },
-              child: const Text('Donate')
-          ),
-        ]));
+            ElevatedButton(
+                onPressed: () {
+                  // TODO: Show dialog
+                },
+                child: const Text('Donate')
+            ),
+          ]),
+        ));
   }
 }
