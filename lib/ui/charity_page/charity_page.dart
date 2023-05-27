@@ -24,7 +24,8 @@ class CharityPage extends StatelessWidget {
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => ChangeNotifierProvider(
-                        create: (context) => CharityDetailState(charityList[index]),
+                        create: (context) =>
+                            CharityDetailState(charityList[index]),
                         child: const CharityDetail(),
                       )));
             },
@@ -55,7 +56,12 @@ class CharityPage extends StatelessWidget {
                               style: const TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 18),
                             ),
-                            Text(charityList[index].description),
+                            Text(
+                              charityList[index].description,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              softWrap: false,
+                            ),
                           ],
                         ),
                         Align(

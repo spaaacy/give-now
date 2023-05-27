@@ -23,7 +23,11 @@ class CharityDetail extends StatelessWidget {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Icon(Icons.logo_dev), // TODO: Use logo
+                  Image(
+                    height: 40,
+                    width: 40,
+                    image: NetworkImage(state.charity.image),
+                  ),
                   const SizedBox(width: 16.0),
                   Text(
                     state.charity.title,
