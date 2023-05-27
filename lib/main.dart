@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:give_n_go/ui/charity_page/charity_page.dart';
 import 'package:give_n_go/ui/common/nav_bar_wrapper.dart';
 import 'package:give_n_go/ui/home_page/home_page.dart';
 import 'package:give_n_go/ui/common/nav_bar_state.dart';
