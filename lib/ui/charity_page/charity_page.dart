@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:give_n_go/util/constants.dart';
-import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
 
 import '../../data/charity.dart';
 import '../../service/background_service.dart';
+import '../../service/charity_service.dart';
 import '../charity_detail/charity_detail.dart';
 import '../charity_detail/charity_detail_state.dart';
 
 class CharityPage extends StatelessWidget {
-  final _box = Hive.box('box');
 
   @override
   Widget build(BuildContext context) {
-    final List<dynamic> charityList = _box.get(hiveCharity);
-
     return ListView.builder(
       itemCount: charityList.length,
       itemBuilder: (context, index) {

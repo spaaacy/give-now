@@ -6,7 +6,11 @@ import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:give_n_go/util/constants.dart';
+import 'package:give_n_go/util/location_helper.dart';
+import 'package:latlng/latlng.dart';
 
+import '../data/charity.dart';
+import 'charity_service.dart';
 import 'notification_service.dart';
 
 class BackgroundService {
@@ -23,7 +27,17 @@ class BackgroundService {
 
     Timer.periodic(const Duration(seconds: 15), (Timer t) async {
       var pos = await Geolocator.getCurrentPosition();
-      notificationService.displayNotification("Title", "${pos.latitude} ${pos.longitude}", "SOLS 24/7");
+      charityList.forEach((element) {
+        final Charity charity = element as Charity;
+        final distance = calculateDistance(
+          pos.latitude, pos.longitude, charity.latitudeLongitude.latitude,
+          charity.latitudeLongitude.longitude,);
+        if (distance < 0.1) {
+          notificationService.displayNotification(
+              "${charity.title} charity box detected nearby!",
+              "Click to donate", charity.title);
+        }
+      });
     });
   }
 
@@ -43,14 +57,16 @@ class BackgroundService {
     const AndroidNotificationChannel channel = AndroidNotificationChannel(
       locationChannelId,
       locationChannelName,
-      description: 'Watching out for nearby virtual donations boxes', // description
+      description: 'Watching out for nearby virtual donations boxes',
+      // description
       importance: Importance.low, // importance must be at low or higher level
     );
 
 
     final notificationsPlugin = NotificationService().notificationPlugin;
     await notificationsPlugin
-        .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
+        .resolvePlatformSpecificImplementation<
+        AndroidFlutterLocalNotificationsPlugin>()
         ?.createNotificationChannel(channel);
 
     await service.configure(
@@ -69,4 +85,5 @@ class BackgroundService {
       ),
     );
   }
+
 }

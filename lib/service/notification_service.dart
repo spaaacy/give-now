@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 
 import '../data/charity.dart';
@@ -10,6 +9,7 @@ import '../ui/charity_detail/charity_detail_state.dart';
 import '../util/constants.dart';
 import '../util/location_helper.dart';
 import 'background_service.dart';
+import 'charity_service.dart';
 
 class NotificationService {
   BuildContext? _context;
@@ -58,19 +58,17 @@ class NotificationService {
       styleInformation: BigTextStyleInformation(''),
     );
     const notificationDetails = NotificationDetails(android: androidDetails);
-    await notificationPlugin.show(charityNotificationId, title, body, notificationDetails, payload: 'SOLS 24/7');
+    await notificationPlugin.show(charityNotificationId, title, body, notificationDetails, payload: payload);
   }
 
   void onDidReceiveNotificationResponse(NotificationResponse notificationResponse) async {
-    final box = Hive.box('box');
-    final List<dynamic> charityList = box.get(hiveCharity);
     final String? payload = notificationResponse.payload;
     if (notificationResponse.payload != null) {
       final Charity charity = charityList.firstWhere((charity) => charity.title == payload);
       await Navigator.push(
         _context!,
         MaterialPageRoute<void>(builder: (context) =>
-            ChangeNotifierProvider(create: (context) => CharityDetailState(charity), child: CharityDetail())),
+            ChangeNotifierProvider(create: (context) => CharityDetailState(charity), child: const CharityDetail())),
       );
     }
   }
