@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:give_n_go/data/charity.dart';
 import 'package:give_n_go/ui/charity_detail/components/map_view.dart';
 import 'package:give_n_go/ui/charity_detail/components/map_view_state.dart';
-import 'package:give_n_go/util/constants.dart';
 import 'package:provider/provider.dart';
 
 import 'charity_detail_state.dart';
@@ -24,18 +22,24 @@ class CharityDetail extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Image(
-                    height: 40,
-                    width: 40,
+                    height: 60,
+                    width: 60,
                     image: NetworkImage(state.charity.image),
                   ),
                   const SizedBox(width: 16.0),
-                  Text(
-                    state.charity.title,
-                    style: Theme.of(context).textTheme.headlineMedium,
+                  Flexible(
+                    child: Container(
+                      padding: new EdgeInsets.only(right: 13.0),
+                      child: Text(
+                        overflow: TextOverflow.ellipsis,
+                        state.charity.title,
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
+                    ),
                   ),
                 ],
               ),
-              const SizedBox(height: 8.0),
+              const SizedBox(height: 16.0),
               ChangeNotifierProvider(
                   create: (context) => MapViewState(), child: const MapView()),
               const SizedBox(height: 8.0),
