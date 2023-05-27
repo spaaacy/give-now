@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:give_n_go/ui/charity_page/charity_detail.dart';
+import 'package:give_n_go/ui/charity_page/charity_detail_state.dart';
 import 'package:give_n_go/ui/home_page/home_page_state.dart';
 import 'package:provider/provider.dart';
 
@@ -9,9 +11,13 @@ class NavBarState extends ChangeNotifier {
 
   final List<Widget> widgetOptions = <Widget>[
     ChangeNotifierProvider(
-        create: (context) => HomePageState(), child: const HomePage()),
-    const Text('Search Page',
-        style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+      create: (context) => HomePageState(),
+      child: const HomePage(),
+    ),
+    ChangeNotifierProvider(
+      create: (context) => CharityDetailState(),
+      child: const CharityDetail(),
+    ),
     const Text('Profile Page',
         style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
   ];
