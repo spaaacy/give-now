@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:give_n_go/ui/home_page/home_page_state.dart';
 import 'package:provider/provider.dart';
 
+import '../common/bottom-nav-bar-widget.dart';
+
 class MayBankHP extends StatelessWidget {
   MayBankHP({super.key});
 
@@ -26,28 +28,7 @@ class MayBankHP extends StatelessWidget {
       body: Center(
         child: _widgetOptions.elementAt(homePageProvider.selectedIndex),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-          items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Home',
-                backgroundColor: Colors.green),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.search),
-                label: 'Charity',
-                backgroundColor: Colors.yellow),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Settings',
-              backgroundColor: Colors.blue,
-            ),
-          ],
-          type: BottomNavigationBarType.shifting,
-          currentIndex: homePageProvider.selectedIndex,
-          selectedItemColor: Colors.black,
-          iconSize: 40,
-          onTap: (index) => homePageProvider.selectedIndex = index,
-          elevation: 5),
+      bottomNavigationBar: const BottomNavBar(),
     );
   }
 }
