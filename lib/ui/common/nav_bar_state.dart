@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:give_n_go/ui/charity_page/charity_detail.dart';
-import 'package:give_n_go/ui/charity_page/charity_detail_state.dart';
 import 'package:give_n_go/ui/home_page/home_page_state.dart';
 import 'package:provider/provider.dart';
 
+import '../charity_detail/charity_detail.dart';
+import '../charity_detail/charity_detail_state.dart';
 import '../home_page/home_page.dart';
 
 class NavBarState extends ChangeNotifier {
