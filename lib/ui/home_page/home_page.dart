@@ -27,7 +27,7 @@ class MayBankHP extends StatelessWidget {
         child: _widgetOptions.elementAt(homePageProvider.selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
-          items: <BottomNavigationBarItem>[
+          items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
                 icon: Icon(Icons.home),
                 label: 'Home',
