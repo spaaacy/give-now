@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:give_n_go/ui/charity_page/charity_detail.dart';
 import 'package:give_n_go/ui/home_page/home_page_state.dart';
 import 'package:provider/provider.dart';
+import '../common/nav_bar.dart';
 
 import '../common/bottom-nav-bar-widget.dart';
 
@@ -19,16 +20,20 @@ class MayBankHP extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final homePageProvider = Provider.of<HomePageProvider>(context);
+    //final homePageProvider = Provider.of<HomePageProvider>(context);
     return Scaffold(
       appBar: AppBar(
           centerTitle: true,
           title: const Text('Maybank Home Page'),
           backgroundColor: Colors.green),
       body: Center(
-        child: _widgetOptions.elementAt(homePageProvider.selectedIndex),
+        child: Text("Hello"),
+        //_widgetOptions.elementAt(homePageProvider.selectedIndex),
       ),
-      bottomNavigationBar: const BottomNavBar(),
+      bottomNavigationBar: ChangeNotifierProvider(
+        create: (context) => BottomNavBarProvider(),
+        child: const BottomNavBar(),
+      ),
     );
   }
 }

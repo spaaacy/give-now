@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
-class HomePageState extends ChangeNotifier {
+class NavBarWrapper extends StatelessWidget {
+  const NavBarWrapper({super.key});
   static const List<Widget> _widgetOptions = <Widget>[
     Text('Home Page',
         style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
@@ -9,4 +11,13 @@ class HomePageState extends ChangeNotifier {
     Text('Profile Page',
         style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
   ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: null,
+      ),
+      //body: Center(child: _widgetOptions.elementAt(homePageProvider.selectedIndex),),
+    );
+  }
 }
