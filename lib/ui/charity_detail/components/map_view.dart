@@ -17,7 +17,7 @@ class MapView extends StatelessWidget {
 
     return SizedBox(
       height: 150,
-      width: 200,
+      width: double.infinity,
       child: FlutterMap(
         mapController: state.mapController,
         options: MapOptions(

@@ -9,7 +9,7 @@ final List<dynamic> charityList = [
     description:
     'Standard Chartered is a reputable international bank committed to making a positive and lasting impact on society. Through its charitable initiatives, Standard Chartered strives to create a better future for communities around the world',
     image:
-    'https://companieslogo.com/img/orig/STAN.L-c30b7cd0.png?t=1628063201',
+    'https://scontent-kul2-1.xx.fbcdn.net/v/t39.30808-6/339740568_746157476919433_5396382582645391439_n.png?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=YDAwgM8M3pwAX-194D4&_nc_ht=scontent-kul2-1.xx&oh=00_AfCIlCo1RmOivZ9KAvhI0CbkJiH-O4KZVX666Ee_WDzfow&oe=6477CB96',
     distance: 0.5,
     donationGoal: 50000,
     currentDonation: 40000,
@@ -23,7 +23,7 @@ final List<dynamic> charityList = [
     description:
     "The World Health Organization (WHO) is a global organization dedicated to promoting health, preventing diseases, and improving the well-being of all people worldwide.",
     image:
-    'https://cdn.who.int/media/images/default-source/infographics/who-emblem.png?sfvrsn=877bb56a_2',
+    'https://delinkage.org/wp-content/uploads/2017/04/who-logo.jpg',
     distance: 0.5,
     donationGoal: 50000,
     currentDonation: 39000,

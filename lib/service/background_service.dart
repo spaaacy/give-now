@@ -25,7 +25,7 @@ class BackgroundService {
       service.stopSelf();
     });
 
-    Timer.periodic(const Duration(seconds: 15), (Timer t) async {
+    Timer.periodic(const Duration(seconds: 2), (Timer t) async {
       var pos = await Geolocator.getCurrentPosition();
       charityList.forEach((element) {
         final Charity charity = element as Charity;
@@ -75,7 +75,7 @@ class BackgroundService {
           autoStart: true,
           isForegroundMode: true,
           notificationChannelId: locationChannelId,
-          initialNotificationTitle: 'giveNgo',
+          initialNotificationTitle: 'GiveNow',
           initialNotificationContent: 'Watching out for nearby virtual donations boxes',
           foregroundServiceNotificationId: locationNotificationId,
           autoStartOnBoot: true
