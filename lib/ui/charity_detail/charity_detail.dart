@@ -86,16 +86,16 @@ class CharityDetail extends StatelessWidget {
                                   onPressed: () {
                                     if (state.donationFormKey.currentState!
                                         .validate()) {
-                                      Navigator.of(context)
-                                          .push(MaterialPageRoute(
-                                        builder: (context) =>
-                                            ChangeNotifierProvider(
-                                          create: (context) =>
-                                              PaymentPageState(),
-                                          child: PaymentPage(),
-                                        ),
-                                      ));
-                                      Navigator.pop(context, 'Okay');
+                                      Navigator.of(context).pushAndRemoveUntil(
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                ChangeNotifierProvider(
+                                              create: (context) =>
+                                                  PaymentPageState(),
+                                              child: PaymentPage(amount: state.donationAmountController.text),
+                                            ),
+                                          ),
+                                          (route) => route.isFirst == true);
                                     }
                                   },
                                   child: const Text('Okay')),
