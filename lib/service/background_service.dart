@@ -18,6 +18,8 @@ class BackgroundService {
 
   @pragma('vm:entry-point')
   static Future<void> _onStart(ServiceInstance service) async {
+    String? recentNotification;
+
     final notificationService = NotificationService();
     DartPluginRegistrant.ensureInitialized();
 
@@ -32,7 +34,8 @@ class BackgroundService {
         final distance = calculateDistance(
           pos.latitude, pos.longitude, charity.latitudeLongitude.latitude,
           charity.latitudeLongitude.longitude,);
-        if (distance < 0.1) {
+        if (distance < 0.1 && recentNotification != charity.title) {
+          recentNotification = charity.title;
           notificationService.displayNotification(
               "${charity.title} charity box detected nearby!",
               "Click to donate", charity.title);
