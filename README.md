@@ -9,5 +9,5 @@ Location-based charity box idea. Uses phone location to detect nearby charity bo
 <img src="https://github.com/spaaacy/give-now/blob/master/assets/github/donation.gif?raw=true" width="25%" height="25%" />
 
 ## Location Notification
-<img src="https://github.com/spaaacy/give-now/blob/master/assets/github/location.gif?raw=true" width="25%" height="25%" />
+<img src="https://github.com/spaaacy/give-now/blob/master/assets/github/location.gif?raw=true" width="65%" height="65%" />
 
